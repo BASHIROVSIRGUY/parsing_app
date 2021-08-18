@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Парсинг</title>
+   <style>
+      @import url("./style.css");
+   </style>
+  <script type = "text/javascript" src="./scripts/jquery-3.6.0.js"></script>
+  <script type = "text/javascript" src="./scripts/script.js"></script>
+ </head>
+ <body>
+   <div id="preloader" class="non_visible" style = "position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
+      <img src="/img/load.gif" style = "width: 100%; position: absolute; top: -28%;">
+   </div>
+    <div id = "div-site">
+      <form>
+
+            <div id = "db_param_inpt" align="right">
+
+               <label class="form-label">
+                 <input type="checkbox" id = "chbox">
+                 <span class="label-text"> Подключиться к базе </span>
+               </label>
+
+                <input id="inpt_db_host" required type="text" value = "localhost"/>
+                <input id="inpt_db_username" required type="text" placeholder ="username" value = "root"/>
+                <input id="inpt_db_password" type="text" placeholder ="password" value = ""/>
+                <input id="inpt_db_name" type="text" placeholder ="name database" value = "parsing_db"/>
+              
+           </div>
+
+
+         <p>
+            <div id="div_url_site" align="right">
+               <label for="input_url_site" class="label_url_input">Ссылка на сайт: </label>
+               <input id="input_url_site" required type="url" value = "https://etp.eltox.ru/registry/procedure"/>
+            </div>
+         </p>
+
+                  
+         <div id="div_key_arr" align="right">
+            <label for="input_key_arr" class="label_key_arr">Ключ к нужному массиву элементов: </label>
+            <input id="input_key_arr" required type="text" value = ".procedure-list .registerBox"/>
+
+             
+
+
+            <div id = "wrap">
+
+
+               <div  id = "div_label_key_cell">
+
+                  <div class = hover>
+                      <label for="div_key_cell" id="label_key_cell">Ключи к искомым элементам:  </label>
+                  </div>
+                  <span class="hidden">
+                        имя в базе | селекторы | что парсить
+                  </span>
+               </div>
+
+
+
+
+
+               <div id = "div_key_cell" class="wrap_item">
+
+                  <div id = "inpt1" class = "div_inpt">
+                  <input id = "name_col1" class ="db_teg" required type="text" value = "page_href"/>
+                  <input id = "inpt_cell1" class = "input_key_cell" required type="text" value = "td.tenderTd dt a"/>
+                  <select id = "select_attr1" value = attr(href)>
+                    <option value = "href">ссылка</option>
+                    <option value = "text">текст</option>
+                  </select>
+                  <button type = "reset" id = "del_btn1" class="c-button del" style="height:26px;">🗑</button>
+                  <br/>
+                  </div>
+
+                  <div id = "inpt2"  class = "div_inpt">
+                  <input id = "name_col2" class ="db_teg"  required type="text" value = "num_oos"/>
+                  <input id = "inpt_cell2" class="input_key_cell" required type="text" value = "td.descriptTenderTd span"/>
+                  <select id = "select_attr2">
+                    <option value = "text">текст</option>
+                    <option value = "href">ссылка</option>
+                  </select>
+                  <button type = "reset" id = "del_btn2" class="c-button del" style="height:26px;">🗑</button>
+                  <br/>
+                  </div>
+
+
+                  <div id = "inpt3" class = "div_inpt">
+                  <input id = "name_col3" class ="db_teg"  required type="text" value = "name_org"/>
+                  <input id = "inpt_cell3" class="input_key_cell" required type="text" value = "dd.nameOrganization"/>
+                  <select id = "select_attr3">
+                    <option value = "text">текст</option>
+                    <option value = "href">ссылка</option>
+                  </select>
+                  <button type = "reset"  id = "del_btn3" class="c-button del" style="height:26px;">🗑</button>
+                  <br/>
+                  </div>
+
+                  <div id = "inpt4" class = "div_inpt">
+                  <input id = "name_col4" class ="db_teg"  required type="text" value = "quote"/>
+                  <input id = "inpt_cell4" class="input_key_cell" required type="text" value = "td.amountTenderTd dl dt"/>
+                  <select id = "select_attr4">
+                    <option value = "text">текст</option>
+                    <option value = "href">ссылка</option>
+                  </select>
+                  <button type = "reset"  id = "del_btn4" class="c-button del" style="height:26px;">🗑</button>
+                  <br/>
+                  </div>
+
+                  <div id = "inpt5" class = "div_inpt">
+                  <input id = "name_col5" class ="db_teg"  required type="text" value = "date_pub"/>
+                  <input id = "inpt_cell5" class="input_key_cell" required type="text" value = "li.publishingDate:eq(1)"/>
+                  <select id = "select_attr5">
+                    <option value = "text">текст</option>
+                    <option value = "href">ссылка</option>
+                  </select>
+                  <button type = "reset" id = "del_btn5" class="c-button del" style="height:26px;">🗑</button>
+                  <br/>
+                  </div>
+
+
+                  <div align="center" style="margin: 1.5%">
+                     <button  onclick="return false" class="c-button up" >Добавить элемент</button>
+                  </div>
+
+               </div>
+
+
+            </div>
+
+             
+               
+         </div>
+
+
+
+      </form>
+      <div align="center" style="margin: 5%">
+         <button id = "parseon" class="c-button"> Спарсить сайт </button>
+      </div>
+    </div>
+ </body>
+
+</html>
